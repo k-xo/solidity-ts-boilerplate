@@ -1,19 +1,19 @@
-import { ethers, run } from 'hardhat'
+import { ethers, run } from 'hardhat';
 
 async function main() {
-  await run('compile')
+  await run('compile');
 
-  const Flashloan = await ethers.getContractFactory('AaveFlashLoan')
-  const flashloan = await Flashloan.deploy('0x1c8756FD2B28e9426CDBDcC7E3c4d64fa9A54728') //ropsten
+  const Greeter = await ethers.getContractFactory('Greeter');
+  const greeter = await Greeter.deploy('Hello, Hardhat!');
 
-  await flashloan.deployed()
+  await greeter.deployed();
 
-  console.log('flashloan deployed to:', flashloan.address)
+  console.log('Greeter deployed to:', greeter.address);
 }
 
 main()
   .then(() => process.exit(0))
   .catch((error) => {
-    console.error(error)
-    process.exit(1)
-  })
+    console.error(error);
+    process.exit(1);
+  });
